@@ -7,7 +7,7 @@
 
 using namespace std;
 
-// DefiniÁ„o do construtor da classe Sculptor
+// Defini√ß√£o do construtor da classe escultor
 Sculptor::Sculptor(int _nx, int _ny, int _nz){
 
     this->nx = _nx;
@@ -40,7 +40,7 @@ Sculptor::Sculptor(int _nx, int _ny, int _nz){
 
 }
 
-//definiÁ„o do destrutor da minha classe Sculptor
+//defini√ß√£o do destrutor da minha classe escultor
 Sculptor::~Sculptor(){
 
     for(int i = 0; i < nx; i++ ){
@@ -55,7 +55,7 @@ Sculptor::~Sculptor(){
 
 }
 
-//agora vxlamos definir a funÁao setColor da classe Sculptor
+//agora vxlamos definir a fun√ßao setColor da classe escultor
 void Sculptor::setColor(float r, float g, float b, float alpha){
 
     this->r = r;
@@ -65,7 +65,7 @@ void Sculptor::setColor(float r, float g, float b, float alpha){
 
 }
 
-//definiÁ„o da funÁ„o putvxloxel
+//defini√ß√£o da fun√ß√£o putvxloxel
 void Sculptor::putVoxel(int x, int y, int z){
 
     this->vxl[x][y][z].isOn = true;
@@ -76,15 +76,15 @@ void Sculptor::putVoxel(int x, int y, int z){
 
 }
 
-//definiÁ„o de cutvxloxel
+//defini√ß√£o de cutvxloxel
 void Sculptor::cutVoxel(int x, int y, int z){
     this->vxl[x][y][z].isOn = false;
 }
 
-//definiÁ„o da funÁ„o putBox
+//defini√ß√£o da fun√ß√£o putBox
 void Sculptor::putBox(int x0, int x1, int y0, int y1, int z0, int z1){
 
-    //verifica se a minha Box Est· dentro da dimens„o
+    //verifica se a minha Box Est√° dentro da dimens√£o
     x0 = (x0 < 0) ? 0 : x0;
     x1 = (x1 > this->nx) ? this->nx : x1;
     y0 = (y0 < 0) ? 0 : y0;
@@ -103,7 +103,7 @@ void Sculptor::putBox(int x0, int x1, int y0, int y1, int z0, int z1){
     }
 }
 
-//definiÁao cutBox
+//defini√ßao cutBox
 void Sculptor::cutBox(int x0, int x1, int y0, int y1, int z0, int z1){
 
     //Desativa os voxels da Box da minha matrix
@@ -117,13 +117,13 @@ void Sculptor::cutBox(int x0, int x1, int y0, int y1, int z0, int z1){
     }
 }
 
-//DefiniÁ„o minha funÁ„o putSphere
+//Defini√ß√£o minha fun√ß√£o putSphere
 void Sculptor::putSphere(int xcenter, int ycenter, int zcenter, int radius){
     //Cria minha esfera
     putEllipsoid(xcenter,ycenter,zcenter,radius,radius,radius);
 }
 
-//DefiniÁ„o minha funÁ„o putSphere
+//Defini√ß√£o minha fun√ß√£o putSphere
 void Sculptor::cutSphere(int xcenter, int ycenter, int zcenter, int radius){
 
     cutEllipsoid(xcenter,ycenter,zcenter,radius,radius,radius);
@@ -131,7 +131,7 @@ void Sculptor::cutSphere(int xcenter, int ycenter, int zcenter, int radius){
 
 void Sculptor::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz){
 
-    //verifica se os valores do elipsÛide est„o dentro da dimens„o
+    //verifica se os valores do elips√≥ide est√£o dentro da dimens√£o
     int x0 = (xcenter - rx < 0) ? 0 : xcenter - rx;
     int x1 = (xcenter + rx > this->nx) ? this->nx : xcenter + rx;
     int y0 = (ycenter - ry < 0) ? 0 : ycenter - ry;
@@ -158,7 +158,7 @@ void Sculptor::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int r
 
 void Sculptor::cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz){
 
-    //verifica se os valores do elipsÛide est„o dentro da dimens„o
+    //verifica se os valores do elips√≥ide est√£o dentro da dimens√£o
     int x0 = (xcenter - rx < 0) ? 0 : xcenter - rx;
     int x1 = (xcenter + rx > this->nx) ? this->nx : xcenter + rx;
     int y0 = (ycenter - ry < 0) ? 0 : ycenter - ry;
@@ -207,9 +207,7 @@ void Sculptor::writeOFF(const char *filename){
         }
     }
 
-    ////////////////////////////////
-    //(Re)Escreve no Formato OFF ///
-    ////////////////////////////////
+   
     myFile << "OFF" << endl;
     myFile << 8 * vOn << " " << 6 * vOn << " 0" << endl;
 
@@ -254,6 +252,5 @@ void Sculptor::writeOFF(const char *filename){
             }
         }
     }
-    // Fecha o arquivo
     myFile.close();
 }
